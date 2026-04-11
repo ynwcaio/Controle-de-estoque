@@ -1,35 +1,37 @@
-package com.api.products.DTO;
+package com.api.products.model.entities;
 
-import com.api.products.model.entities.Products;
+
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
-public class ProdutcsDTO {
+
+@Entity
+@Table(name = "tb_products")
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "product")
     private String name;
+
+    @Column(name = "type")
     private String type;
+
+    @Column(name = "quantity")
     private Integer quantity;
+
+    @Column(name = "price" , precision = 10, scale = 2)
     private BigDecimal price;
 
+    public Product(){
 
-    public ProdutcsDTO(){
-
-    }
-
-    public ProdutcsDTO(Products products){
-        this.id = products.getId();
-        this.name = products.getName();
-        this.type = products.getType();
-        this.quantity = products.getQuantity();
-        this.price = products.getPrice();
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
